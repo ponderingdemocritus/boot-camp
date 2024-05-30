@@ -10,6 +10,8 @@ export default {
     "hover:bg-green-100",
     "hover:bg-blue-100",
     "hover:bg-yellow-200",
+    "border-red-100",
+    "border-blue-100",
   ],
   theme: {
     extend: {},

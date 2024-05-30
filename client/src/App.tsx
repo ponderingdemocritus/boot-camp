@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 import { useDojo } from "./dojo/useDojo";
 import { useComponentValue, useEntityQuery } from "@dojoengine/react";
 import { getEntityIdFromKeys } from "@dojoengine/utils";
 import { shortString } from "starknet";
-import { Has, HasValue, getComponentValue } from "@dojoengine/recs";
+import { Has, HasValue } from "@dojoengine/recs";
 
 function Cell({ x, y, color }: { x: number; y: number; color: string }) {
   const {
@@ -35,9 +35,9 @@ function Cell({ x, y, color }: { x: number; y: number; color: string }) {
           color: BigInt(shortString.encodeShortString(color)),
         });
       }}
-      className={`w-12 cursor-pointer duration-300 hover:bg-${color}-100 h-12 border border-blue-100/10 flex justify-center bg-${shortString.decodeShortString(tile.color.toString())}-100`}
+      className={`w-12 cursor-pointer duration-300 hover:bg-${color}-100 h-12 border-${color}-100 border-blue-100/10 flex justify-center bg-${shortString.decodeShortString(tile.color.toString())}-100`}
     >
-      <span className="self-center">
+      <span className="self-center text-black/20">
         {x},{y}
       </span>
     </div>
@@ -78,6 +78,8 @@ function App() {
     }
     return tempGrid;
   }, [color]);
+
+  console.log(Number(player?.last_action.toString()) || 0);
 
   return (
     <div className="container mx-auto">
