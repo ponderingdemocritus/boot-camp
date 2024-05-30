@@ -1,6 +1,8 @@
-# Dojo Bootcamp - Basic Paint Dapp
+# Dojo Bootcamp - Paint me
 
 This is a very basic app showing a basic dojo world connected to a react vite application.
+
+Players can paint locations on a grid.
 
 ### Client
 
