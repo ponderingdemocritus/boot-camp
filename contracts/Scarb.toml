@@ -1,0 +1,41 @@
+[package]
+cairo-version = "2.5.4"
+name = "boot_camp_paint"
+version = "0.6.0"
+
+[cairo]
+sierra-replace-ids = true
+
+[scripts]
+migrate = "sozo build && sozo migrate apply && ./scripts/default_auth.sh"
+spawn = "./scripts/spawn.sh"
+move = "./scripts/move.sh"
+
+[dependencies]
+dojo = { git = "https://github.com/dojoengine/dojo", tag = "v0.7.0-alpha.5" }
+
+[[target.dojo]]
+
+[tool.dojo]
+initializer_class_hash = "0xbeef"
+
+[tool.dojo.env]
+rpc_url = "http://localhost:5050/"
+# Default account for katana with seed = 0
+account_address = "0xb3ff441a68610b30fd5e2abbf3a1548eb6ba6f3559f2862bf2dc757e5828ca"
+private_key = "0x2bbf4f9fd0bbb2e60b0316c1fe0b76cf7a4d0198bd493ced9b8df2a3a24d68a"
+world_address = "0x6457e5a40e8d0faf6996d8d0213d6ba2f44760606e110e03e3d239c5f769e87"
+
+
+[tool.dojo.world]
+name = "Dojo starter"
+description = "Boot Camp Paint"
+cover_uri = "file://assets/cover.png"
+icon_uri = "file://assets/icon.png"
+website = "https://github.com/dojoengine/dojo-starter"
+
+[tool.dojo.world.socials]
+x = "https://x.com/ohayo_dojo"
+discord = "https://discord.gg/FB2wR6uF"
+github = "https://github.com/dojoengine/dojo-starter"
+telegram = "https://t.me/dojoengine"

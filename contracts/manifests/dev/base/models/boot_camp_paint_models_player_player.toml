@@ -1,0 +1,20 @@
+kind = "DojoModel"
+class_hash = "0x28425c4c4a4104384d72633a799af73873a690856ad18f6754f6f2bc37f6236"
+original_class_hash = "0x28425c4c4a4104384d72633a799af73873a690856ad18f6754f6f2bc37f6236"
+abi = "manifests/dev/abis/base/models/boot_camp_paint_models_player_player.json"
+name = "boot_camp_paint::models::player::player"
+
+[[members]]
+name = "player"
+type = "u32"
+key = true
+
+[[members]]
+name = "address"
+type = "starknet::ContractAddress"
+key = false
+
+[[members]]
+name = "last_action"
+type = "u64"
+key = false

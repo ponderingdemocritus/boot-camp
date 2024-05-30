@@ -1,0 +1,77 @@
+[world]
+kind = "WorldContract"
+class_hash = "0xf6f44afb3cacbcc01a371aff62c86ca9a45feba065424c99f7cd8637514d8f"
+original_class_hash = "0xf6f44afb3cacbcc01a371aff62c86ca9a45feba065424c99f7cd8637514d8f"
+abi = "manifests/dev/abis/deployments/dojo_world_world.json"
+address = "0x6457e5a40e8d0faf6996d8d0213d6ba2f44760606e110e03e3d239c5f769e87"
+transaction_hash = "0x6b810ab6effedbf895d7643ea62929f75b067997f118cb61926a8919fb9dcb0"
+block_number = 3
+seed = "boot_camp_paint"
+name = "dojo::world::world"
+
+[world.metadata]
+profile_name = "dev"
+rpc_url = "http://localhost:5050/"
+
+[base]
+kind = "Class"
+class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
+original_class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
+name = "dojo::base::base"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x19eb63ef6d7b913d85f7df8b83f945eceb9632adf8f9ce84f659440231e02cf"
+class_hash = "0x6cdf616a8dc8bccfa00138eaa9167c33a3c8abf0c797028cf18364724e77b3b"
+original_class_hash = "0x6cdf616a8dc8bccfa00138eaa9167c33a3c8abf0c797028cf18364724e77b3b"
+base_class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
+abi = "manifests/dev/abis/deployments/contracts/boot_camp_paint_systems_actions_actions.json"
+reads = []
+writes = []
+computed = []
+init_calldata = []
+name = "boot_camp_paint::systems::actions::actions"
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x28425c4c4a4104384d72633a799af73873a690856ad18f6754f6f2bc37f6236"
+original_class_hash = "0x28425c4c4a4104384d72633a799af73873a690856ad18f6754f6f2bc37f6236"
+abi = "manifests/dev/abis/deployments/models/boot_camp_paint_models_player_player.json"
+name = "boot_camp_paint::models::player::player"
+
+[[models.members]]
+name = "player"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "address"
+type = "starknet::ContractAddress"
+key = false
+
+[[models.members]]
+name = "last_action"
+type = "u64"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x4effc6a58ff267a44e63158648d1f8b48bbaf81519e6a09764946631d871eeb"
+original_class_hash = "0x4effc6a58ff267a44e63158648d1f8b48bbaf81519e6a09764946631d871eeb"
+abi = "manifests/dev/abis/deployments/models/boot_camp_paint_models_tile_tile.json"
+name = "boot_camp_paint::models::tile::tile"
+
+[[models.members]]
+name = "x"
+type = "u16"
+key = true
+
+[[models.members]]
+name = "y"
+type = "u16"
+key = true
+
+[[models.members]]
+name = "color"
+type = "felt252"
+key = false
