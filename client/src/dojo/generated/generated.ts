@@ -22,13 +22,11 @@ export async function setupWorld(provider: DojoProvider) {
 
     const paint = async ({
       account,
-      player_id,
       x,
       y,
       color,
     }: {
       account: AccountInterface;
-      player_id: number;
       x: number;
       y: number;
       color: bigint;
@@ -37,7 +35,7 @@ export async function setupWorld(provider: DojoProvider) {
         return await provider.execute(account, {
           contractName: "actions",
           entrypoint: "paint",
-          calldata: [player_id, x, y, color],
+          calldata: [x, y, color],
         });
       } catch (error) {
         console.error("Error executing move:", error);

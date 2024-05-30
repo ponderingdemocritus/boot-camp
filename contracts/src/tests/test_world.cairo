@@ -52,11 +52,12 @@ mod tests {
     const TILE_COLOR: felt252 = 'red';
 
     fn place() -> (IWorldDispatcher, IActionsDispatcher) {
+        starknet::testing::set_contract_address(player_one_address());
         // [setup world]
         let (world, actions_system) = spawn();
 
         // [act] x=1, y=1, red=encoded
-        actions_system.paint(PLAYER_ONE, TILE_X, TILE_Y, TILE_COLOR);
+        actions_system.paint(TILE_X, TILE_Y, TILE_COLOR);
 
         (world, actions_system)
     }
@@ -65,10 +66,10 @@ mod tests {
     #[available_gas(30000000)]
     fn test_spawn() {
         // [setup world]
-        let (world, actions_system) = spawn();
+        let (world, _) = spawn();
 
         // [assert]
-        let player = get!(world, (PLAYER_ONE), Player);
+        let player = get!(world, (player_one_address()), Player);
         assert(player.address == player_one_address(), 'address is wrong');
     }
 
@@ -76,7 +77,7 @@ mod tests {
     #[available_gas(30000000)]
     fn test_place() {
         // [setup world]
-        let (world, actions_system) = place();
+        let (world, _) = place();
 
         // [assert]
         let tile = get!(world, (TILE_X, TILE_Y), Tile);

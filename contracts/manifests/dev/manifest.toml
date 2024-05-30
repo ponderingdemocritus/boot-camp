@@ -22,8 +22,8 @@ name = "dojo::base::base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x19eb63ef6d7b913d85f7df8b83f945eceb9632adf8f9ce84f659440231e02cf"
-class_hash = "0x6cdf616a8dc8bccfa00138eaa9167c33a3c8abf0c797028cf18364724e77b3b"
-original_class_hash = "0x6cdf616a8dc8bccfa00138eaa9167c33a3c8abf0c797028cf18364724e77b3b"
+class_hash = "0x703e6f0ac7f62b73304461ce3ecc5c445f17f310b3d499aa6b29aa6c56ddd82"
+original_class_hash = "0x703e6f0ac7f62b73304461ce3ecc5c445f17f310b3d499aa6b29aa6c56ddd82"
 base_class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
 abi = "manifests/dev/abis/deployments/contracts/boot_camp_paint_systems_actions_actions.json"
 reads = []
@@ -34,19 +34,19 @@ name = "boot_camp_paint::systems::actions::actions"
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x28425c4c4a4104384d72633a799af73873a690856ad18f6754f6f2bc37f6236"
-original_class_hash = "0x28425c4c4a4104384d72633a799af73873a690856ad18f6754f6f2bc37f6236"
+class_hash = "0x48783236bb528339cd62514ad46bceb42577cc7e1c2dd0c9e2db3ec29fdac68"
+original_class_hash = "0x48783236bb528339cd62514ad46bceb42577cc7e1c2dd0c9e2db3ec29fdac68"
 abi = "manifests/dev/abis/deployments/models/boot_camp_paint_models_player_player.json"
 name = "boot_camp_paint::models::player::player"
 
 [[models.members]]
-name = "player"
-type = "u32"
+name = "address"
+type = "starknet::ContractAddress"
 key = true
 
 [[models.members]]
-name = "address"
-type = "starknet::ContractAddress"
+name = "player"
+type = "u32"
 key = false
 
 [[models.members]]

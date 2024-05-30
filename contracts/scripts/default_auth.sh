@@ -25,8 +25,8 @@ echo "--------------------------------------------------------------------------
 
 # enable system -> models authorizations
 sozo auth grant --world $WORLD_ADDRESS --wait writer \
-  Player,0x19eb63ef6d7b913d85f7df8b83f945eceb9632adf8f9ce84f659440231e02cf\
-  Tile,0x19eb63ef6d7b913d85f7df8b83f945eceb9632adf8f9ce84f659440231e02cf\
+  Player,boot_camp_paint::systems::actions::actions\
+  Tile,boot_camp_paint::systems::actions::actions\
   >/dev/null
 
 echo "Default authorizations have been successfully set."

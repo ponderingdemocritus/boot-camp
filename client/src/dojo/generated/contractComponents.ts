@@ -2,24 +2,18 @@
 
 import { defineComponent, Type as RecsType, World } from "@dojoengine/recs";
 
-export type ContractComponents = Awaited<
-  ReturnType<typeof defineContractComponents>
->;
+export type ContractComponents = Awaited<ReturnType<typeof defineContractComponents>>;
 
 export function defineContractComponents(world: World) {
   return {
     Player: (() => {
       return defineComponent(
         world,
-        {
-          player: RecsType.Number,
-          address: RecsType.BigInt,
-          last_action: RecsType.BigInt,
-        },
+        { address: RecsType.BigInt, player: RecsType.Number, last_action: RecsType.BigInt },
         {
           metadata: {
             name: "Player",
-            types: ["u32", "contractaddress", "u64"],
+            types: ["contractaddress","u32","u64"],
             customTypes: [],
           },
         }
@@ -32,7 +26,7 @@ export function defineContractComponents(world: World) {
         {
           metadata: {
             name: "Tile",
-            types: ["u16", "u16", "felt252"],
+            types: ["u16","u16","felt252"],
             customTypes: [],
           },
         }

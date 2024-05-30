@@ -27,6 +27,12 @@ export function createSystemCalls(
         retryInterval: 100,
       });
 
+      console.log(
+        await account.waitForTransaction(transaction_hash, {
+          retryInterval: 100,
+        })
+      );
+
       await new Promise((resolve) => setTimeout(resolve, 1000));
     } catch (e) {
       console.log(e);
@@ -35,7 +41,6 @@ export function createSystemCalls(
 
   const move = async ({
     account,
-    player_id,
     x,
     y,
     color,
@@ -44,12 +49,11 @@ export function createSystemCalls(
     player_id: number;
     x: number;
     y: number;
-    color: string;
+    color: bigint;
   }) => {
     try {
       const { transaction_hash } = await client.actions.paint({
         account,
-        player_id,
         x,
         y,
         color,
@@ -58,6 +62,12 @@ export function createSystemCalls(
       await account.waitForTransaction(transaction_hash, {
         retryInterval: 100,
       });
+
+      console.log(
+        await account.waitForTransaction(transaction_hash, {
+          retryInterval: 100,
+        })
+      );
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
     } catch (e) {

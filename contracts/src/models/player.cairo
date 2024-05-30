@@ -5,8 +5,8 @@ const TIME_BETWEEN_ACTIONS: u64 = 120;
 #[dojo::model]
 struct Player {
     #[key]
-    player: u32,
     address: starknet::ContractAddress,
+    player: u32,
     last_action: u64
 }
 

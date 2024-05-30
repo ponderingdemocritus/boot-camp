@@ -2,7 +2,7 @@
 #[dojo::interface]
 trait IActions {
     fn spawn();
-    fn paint(player: u32, x: u16, y: u16, color: felt252);
+    fn paint(x: u16, y: u16, color: felt252);
 }
 
 
@@ -23,21 +23,21 @@ mod actions {
 
             let existing_player = get!(world, (player), Player);
 
-            assert(existing_player.address.into() == 0, 'ACTIONS: player already exists');
+            assert(existing_player.last_action == 0, 'ACTIONS: player already exists');
 
             // [get]: timestamp
             let last_action = get_block_timestamp();
 
             // [set]: create a new player
-            set!(world, Player { player, address, last_action });
+            set!(world, Player { address, player, last_action });
         }
 
-        fn paint(world: IWorldDispatcher, player: u32, x: u16, y: u16, color: felt252) {
+        fn paint(world: IWorldDispatcher, x: u16, y: u16, color: felt252) {
             // [get]: get the caller address
             let address = get_caller_address();
 
             // [get]: get the player
-            let player = get!(world, (player), Player);
+            let player = get!(world, (address), Player);
 
             // [assert]: only the player can paint
             assert(player.address == address, 'ACTIONS: not player');
