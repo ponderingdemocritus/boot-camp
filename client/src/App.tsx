@@ -4,9 +4,17 @@ import { useDojo } from "./dojo/useDojo";
 import { useComponentValue, useEntityQuery } from "@dojoengine/react";
 import { getEntityIdFromKeys } from "@dojoengine/utils";
 import { shortString } from "starknet";
-import { Has, HasValue } from "@dojoengine/recs";
+import { Has, HasValue, getComponentValue } from "@dojoengine/recs";
 
-function Cell({ x, y }: { x: number; y: number }) {
+function Cell({
+  x,
+  y,
+  player_id,
+}: {
+  x: number;
+  y: number;
+  player_id: number | null;
+}) {
   const {
     setup: {
       clientComponents: { Tile },
@@ -25,18 +33,20 @@ function Cell({ x, y }: { x: number; y: number }) {
     }
   );
 
-  const handleClick = () => {
-    client.actions.paint({
-      account,
-      player_id: 1,
-      x,
-      y,
-      color: BigInt(shortString.encodeShortString("red")),
-    });
-  };
-
   return (
     <div
+      onClick={async () => {
+        if (player_id === null) {
+          return;
+        }
+        await client.actions.paint({
+          account,
+          player_id,
+          x,
+          y,
+          color: BigInt(shortString.encodeShortString("red")),
+        });
+      }}
       className={`w-12 hover:bg-red-100 h-12 border border-blue-100/10 flex justify-center bg-${shortString.decodeShortString(tile.color.toString())}-100`}
     >
       <span className="self-center">
@@ -57,18 +67,27 @@ function App() {
 
   const player = useEntityQuery([
     Has(Player),
-    // HasValue(Player, { address: BigInt(account.address) }),
+    HasValue(Player, { address: BigInt(account.address) }),
   ]);
   console.log(player);
 
-  const player_id = useMemo(() => {}, []);
+  const player_id = useMemo(() => {
+    return player.length ? getComponentValue(Player, player[0])?.player : null;
+  }, [player]);
 
   const grid = useMemo(() => {
     const tempGrid = [];
     for (let row = 0; row < 10; row++) {
       const cols = [];
       for (let col = 0; col < 10; col++) {
-        cols.push(<Cell key={`${row}-${col}`} x={row} y={col} />);
+        cols.push(
+          <Cell
+            key={`${row}-${col}`}
+            x={row}
+            y={col}
+            player_id={player_id || null}
+          />
+        );
       }
       tempGrid.push(
         <div key={row} className="flex flex-wrap">

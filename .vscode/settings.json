@@ -1,5 +1,10 @@
 {
-  "cairo1.enableLanguageServer": true,
-  "cairo1.enableScarb": true,
-  "cairo1.languageServerPath": "${userHome}/.dojo/bin/dojo-language-server"
+  "cairo1.languageServerPath": "/Users/os/Documents/dojo-language-server",
+  "cairo1.preferScarbLanguageServer": false,
+  "cairo1.languageServerExtraEnv": {
+    "SCARB": "/Users/os/Documents/Documents/scarb-dojo",
+    //"SCARB": "/Users/glihm/swm/scarb/target/debug/scarb",
+    //"SCARB": "/Users/glihm/.asdf/installs/scarb/nightly-2024-05-25/bin/scarb",
+    "CAIRO_LS_LOG": "cairo_lang_language_server=debug"
+  }
 }
